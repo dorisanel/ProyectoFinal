@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1563244718 source:c:\users\aneli\onedrive\desktop\proyectofinal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"libreria_proyecto.h"
+
+1562959626 c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.h
+
+1563244718 source:c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.c
+	"libreria_proyecto.h"
+
