@@ -2,14 +2,15 @@
 #define MAX 100000
 void corregir_mayus(char *texto)
 {
-    /*Para convertir la primera letra del texto a mayúscula*/
+    //PROXIMAMENTE: CORREGIR AL INICIO DE CADA PARRAFO
+    /*Para convertir la primera letra del texto a mayÃºscula*/
     if (texto[0]>='a' && texto[0]<='z')
     {
         texto[0]-=32;
     }
     for (int i=0; texto[i]!='\0'; i++)
     {
-        /*Para convertir las letras después de punto a mayúscula*/
+        /*Para convertir las letras despuÃ©s de punto a mayÃºscula*/
         if (texto[i]=='.' && texto[i+2]>='a' && texto[i+2]<='z')
         {
             texto[i+2]-=32;
@@ -47,7 +48,8 @@ void corregir_acentos(char *texto)
 int contador_palabras(char *texto)
 {
     int cont=1;
-    /*Cuenta una palabra después de cada espacio.
+    //PROXIMAMENTE: COMPROBAR ESPACIO LUEGO DE PUNTO Y PALABRAS LUEGO DE SALTO DE LINEA
+    /*Cuenta una palabra despuÃ©s de cada espacio.
       Inica en 1 para contar la primera palabra*/
     for (int i=0; texto[i]!='\0'; i++)
     {
