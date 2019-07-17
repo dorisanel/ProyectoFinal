@@ -45,19 +45,22 @@ void corregir_acentos(char *texto)
         }
     }
 }
+
+
 int contador_palabras(char *texto)
 {
     int cont=1;
-    //PROXIMAMENTE: COMPROBAR ESPACIO LUEGO DE PUNTO Y PALABRAS LUEGO DE SALTO DE LINEA
-    /*Cuenta una palabra después de cada espacio.
+        /*Cuenta una palabra después de cada espacio.
       Inica en 1 para contar la primera palabra*/
-    for (int i=0; texto[i]!='\0'; i++)
-    {
-        if(texto[i]==32)
-        {
-            cont++;
-        }
-    }
 
+   while(*texto!='\0')
+{
+    if(*texto==' ' && (*texto+1)!=' ')
+    {
+    cont++;
+    }
+    texto++;
+}
     return cont;
+
 }
