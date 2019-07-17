@@ -45,13 +45,11 @@ void corregir_acentos(char *texto)
         }
     }
 }
-
-
 int contador_palabras(char *texto)
 {
     int cont=1;
-        /*Cuenta una palabra después de cada espacio.
-      Inica en 1 para contar la primera palabra*/
+        /*Cuenta una palabra después de cada espacio, siempre que depués de espacio
+        no haya otro espacio. Inica en 1 para contar la primera palabra*/
 
    while(*texto!='\0')
 {
@@ -62,5 +60,4 @@ int contador_palabras(char *texto)
     texto++;
 }
     return cont;
-
 }
