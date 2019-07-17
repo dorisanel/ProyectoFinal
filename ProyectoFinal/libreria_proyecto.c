@@ -46,15 +46,17 @@ void corregir_acentos(char *texto)
 }
 int contador_palabras(char *texto)
 {
-    int cont=1;
+    int cont=0;
     /*Cuenta una palabra después de cada espacio, siempre que depués de espacio
         no haya otro espacio. Inica en 1 para contar la primera palabra*/
-    for (int i=0; texto[i]!='\0'; i++)
+    for (int i=0; *(texto+i)!='\0'; i++)
     {
-        if(texto[i]==32 && texto[i+1]!=32)
-        {
+        if(*(texto+i)==' ' && *(texto+(i+1))!=' ')
             cont++;
-        }
+
+        if(*(texto+i)!=' ' && *(texto+i+1)=='\0')
+            cont++;
+
     }
 
     return cont;
