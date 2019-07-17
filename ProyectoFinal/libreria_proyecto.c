@@ -1,5 +1,4 @@
 #include "libreria_proyecto.h"
-#define MAX 100000
 void corregir_mayus(char *texto)
 {
     //PROXIMAMENTE: CORREGIR AL INICIO DE CADA PARRAFO
