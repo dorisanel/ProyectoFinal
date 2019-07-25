@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "libreria_proyecto.h"
 
 int main()
@@ -18,14 +17,12 @@ int main()
         else
             texto = (char*)realloc(texto,(cont+1)*sizeof(char));
 
-
         *(texto+cont) = letra;
+
         if(letra==EOF)
             *(texto+cont) ='\0';
 
         cont++;
-
-
     }
     while((letra!=EOF));
 
@@ -33,6 +30,7 @@ int main()
     corregir_acentos(texto);
 
     puts(texto);
+    printf("\b");/*Para borrar el ctrl Z*/
 
     printf("\n\nCantidad de palabras: %d",contador_palabras(texto));
 

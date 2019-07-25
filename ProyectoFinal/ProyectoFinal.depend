@@ -1,34 +1,14 @@
 # depslib dependency file v1.0
-1563244718 source:c:\users\aneli\onedrive\desktop\proyectofinal\main.c
+1563397100 source:c:\users\aneli\onedrive\desktop\proyectofinal\main.c
 	<stdio.h>
 	<stdlib.h>
-	<string.h>
 	"libreria_proyecto.h"
 
 1562959626 c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.h
 
-1563244718 source:c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.c
+1563407295 source:c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.c
 	"libreria_proyecto.h"
-
-1563245120 source:c:\users\alberto\desktop\proyectofinal-master\proyectofinal\main.c
-	<stdio.h>
-	<stdlib.h>
 	<string.h>
-	"libreria_proyecto.h"
-
-1563367574 c:\users\alberto\desktop\proyectofinal-master\proyectofinal\libreria_proyecto.h
-
-1563367574 source:c:\users\alberto\desktop\proyectofinal-master\proyectofinal\libreria_proyecto.c
-	"libreria_proyecto.h"
-
-1563384838 source:c:\users\iván ramírez\desktop\new folder (2)\proyectofinal-master\proyectofinal\main.c
-	<stdio.h>
 	<stdlib.h>
-	<string.h>
-	"libreria_proyecto.h"
-
-1563384838 c:\users\iván ramírez\desktop\new folder (2)\proyectofinal-master\proyectofinal\libreria_proyecto.h
-
-1563405915 source:c:\users\iván ramírez\desktop\new folder (2)\proyectofinal-master\proyectofinal\libreria_proyecto.c
-	"libreria_proyecto.h"
+	<stdio.h>
 
