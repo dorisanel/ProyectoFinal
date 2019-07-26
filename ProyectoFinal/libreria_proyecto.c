@@ -58,6 +58,35 @@ void corregir_acentos(char *texto)
         cl++;
     }
 }
+void sangria(char *texto)
+{
+    //IGNORAR: TRABAJANDO EN ESTA FUNCION
+    int cont=0, M=(strlen(texto)+2);
+    char aux[2]={'\t'}, tab[100]={'\t'};
+
+    for(int i=0; texto[i]!='\0';i++)
+    {
+        //strcpy(tab,aux);
+
+        texto= (char*)realloc(texto,(M+cont)*sizeof(char));
+        if(i==0)
+        {
+            //tab=(char*)malloc(M*sizeof(char));
+            strcat(tab, texto);
+            /*Aca a la cadena tab se le agrega el texto.
+            Esto para la sangria a inicio de parrafo*/
+        }
+
+        /*if(texto[i]=='\n')//Si hay cambio de linea se introducira un \t
+        {
+            //Asignando memoria para tratar de corregir errores
+            texto= (char*)realloc(texto,(strlen(texto)+cont+2)*sizeof(char));
+            strcat(tab, texto);
+            cont++;
+        }*/
+        strcpy(texto,tab);
+    }
+}
 int contador_palabras(char *texto)
 {
     int cont=0;
@@ -77,34 +106,37 @@ int contador_palabras(char *texto)
 
     return cont;
 }
-void sangria(char *texto)
+int contador_oraciones(char *texto)
 {
-    //IGNORAR: TRABAJANDO EN ESTA FUNCION
-    char tab[2]={'\t','a'};/*Esto es para ver si se agrega el \t*/
     int cont=0;
-
-    texto= (char*)realloc(texto,(strlen(texto)+2)*sizeof(char));
-
-    for(int i=0; texto[i]!='\0';i++)
+    /*Cuenta una oracion después de cada punto, siempre que depués de
+    punto no haya otro punto. También cuenta como oracion luego de salto de línea*/
+    for (int i=0; texto[i]!='\0'; i++)
     {
-        if(i==0)
+        if(*(texto+i)=='.' && *(texto+(i+1))!='.')
         {
-            strcat(tab, texto);
-            /*Aca a la cadena tab se le agrega el texto.
-            Esto para la sangria a inicio de parrafo*/
+            cont++;
         }
-        if(texto[i]=='\n')//Si hay cambio de linea se introducira un \t
+        if(texto[i]=='\n' && (texto[i+1]!='\n'))
         {
-            /*Asignando memoria para tratar de corregir errores*/
-            texto= (char*)realloc(texto,(strlen(texto)+cont+2)*sizeof(char));
-            strcat(tab, texto);
             cont++;
         }
     }
 
-    /*Trabajando en como lograr que texto tenga el valor de tab, actualmente me da error*/
+    return cont;
+}
+int contador_parrafos(char *texto)
+{
+    int cont=0;
+    /*Cuenta un parrafo después de cada salto de linea, siempre que depués de
+     salto de línea no haya otro*/
+    for (int i=0; texto[i]!='\0'; i++)
+    {
+        if(texto[i]=='\n' && (texto[i+1]!='\n'))
+        {
+            cont++;
+        }
+    }
 
-    //puts(tab);
-
-    //strcpy(texto,tab);
+    return cont;
 }

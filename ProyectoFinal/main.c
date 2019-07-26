@@ -8,7 +8,7 @@ int main()
 {
     char *texto, letra,comando,guardar_texto[50];
     FILE *guardad_nuevo;
-    int cont=0,vim;
+    int cont=0, vim;
 
     printf("Digite el nombre donde se guardar%c el archivo de texto: ",160);
     gets(guardar_texto);
@@ -42,12 +42,14 @@ int main()
     printf("\b");/*Para borrar el ctrl Z*/
 
     printf("\n\nCantidad de palabras: %d",contador_palabras(texto));
+    printf("\nCantidad de oraciones: %d",contador_oraciones(texto));
+    printf("\nCantidad de parrafos: %d",contador_parrafos(texto));
 
     comando=getchar(); // espera a que digite un caracter que es el >
 
     if(comando== LETRA) // Para poder digitar comandos a lo vim
     {
-        printf("\ndigite un comando");
+        printf("\nDigite un comando");
         scanf("%d",&vim);
 
         if(vim==1)     //Prueba de usar comando
