@@ -12,3 +12,16 @@
 	<stdlib.h>
 	<stdio.h>
 
+1564095405 source:c:\users\alberto\desktop\proyectofinal-master\proyectofinal\libreria_proyecto.c
+	"libreria_proyecto.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1564094456 c:\users\alberto\desktop\proyectofinal-master\proyectofinal\libreria_proyecto.h
+
+1564104374 source:c:\users\alberto\desktop\proyectofinal-master\proyectofinal\main.c
+	<stdio.h>
+	<stdlib.h>
+	"libreria_proyecto.h"
+

@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+
 void corregir_mayus(char *texto)
 {
     /*Para convertir la primera letra del texto a mayúscula*/
