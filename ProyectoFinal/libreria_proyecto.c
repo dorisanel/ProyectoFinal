@@ -1,7 +1,4 @@
 #include "libreria_proyecto.h"
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 void corregir_mayus(char *texto)
 {
@@ -34,10 +31,6 @@ void corregir_acentos(char *texto)
     //PROXIMAMENTE: PERFECCIONAR PARA PALABRAS QUE LLEVAN EXCEPCIONES
     for(int i=0; texto[i]!='\0'; i++)
     {
-        if((texto[i]=='c'||texto[i]=='s') && texto[i+1]=='i' && texto[i+2]=='o' && texto[i+3]=='n' && (texto[i+4]==32 || texto[i+4]=='.' || texto[i+4]=='\n'))
-        {
-            texto[i+2]=162;
-        }
         if(texto[i]=='a' && texto[i+1]=='n' && (texto[i+2]=='.' || texto[i+2]==32 || texto[i+2]=='\n') && cl>2)
         {
             texto[i]=160;
@@ -83,4 +76,35 @@ int contador_palabras(char *texto)
     }
 
     return cont;
+}
+void sangria(char *texto)
+{
+    //IGNORAR: TRABAJANDO EN ESTA FUNCION
+    char tab[2]={'\t','a'};/*Esto es para ver si se agrega el \t*/
+    int cont=0;
+
+    texto= (char*)realloc(texto,(strlen(texto)+2)*sizeof(char));
+
+    for(int i=0; texto[i]!='\0';i++)
+    {
+        if(i==0)
+        {
+            strcat(tab, texto);
+            /*Aca a la cadena tab se le agrega el texto.
+            Esto para la sangria a inicio de parrafo*/
+        }
+        if(texto[i]=='\n')//Si hay cambio de linea se introducira un \t
+        {
+            /*Asignando memoria para tratar de corregir errores*/
+            texto= (char*)realloc(texto,(strlen(texto)+cont+2)*sizeof(char));
+            strcat(tab, texto);
+            cont++;
+        }
+    }
+
+    /*Trabajando en como lograr que texto tenga el valor de tab, actualmente me da error*/
+
+    //puts(tab);
+
+    //strcpy(texto,tab);
 }
