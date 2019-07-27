@@ -6,15 +6,17 @@
 
 int main()
 {
-    char *texto, letra,comando,guardar_texto[50];
-    FILE *guardad_nuevo;
-    int cont=0, vim;
+    char *texto, letra, palabra[50], palabrapor[50];
+    //comando,guardar_texto[50];
+    //FILE *guardad_nuevo;
+    int cont=0, busc_remp;
+    //, vim;
 
-    printf("Digite el nombre donde se guardar%c el archivo de texto: ",160);
+    /*printf("Digite el nombre donde se guardar%c el archivo de texto: ",160);
     gets(guardar_texto);
-    guardad_nuevo=fopen(guardar_texto,"rt");
+    guardad_nuevo=fopen(guardar_texto,"rt");*/
 
-    printf("Digite texto: ");
+    printf("Digite texto: \n");
 
     do
     {
@@ -45,7 +47,7 @@ int main()
     printf("\nCantidad de oraciones: %d",contador_oraciones(texto));
     printf("\nCantidad de parrafos: %d",contador_parrafos(texto));
 
-    comando=getchar(); // espera a que digite un caracter que es el >
+    /*comando=getchar(); // espera a que digite un caracter que es el >
 
     if(comando== LETRA) // Para poder digitar comandos a lo vim
     {
@@ -65,11 +67,29 @@ int main()
     if(!(guardad_nuevo==NULL))
     {
         fwrite(texto,sizeof(texto),10,guardad_nuevo);
-        printf("Funciono\n");
+        printf("Texto guardado con exito!\n");
 
+    }*/
+
+    printf("\n\nDesea remplazar alguna palabra? \n1.Si \n2.No\n");
+    scanf("%d",&busc_remp);
+
+    if(busc_remp==1)
+    {
+        fflush(stdin);
+        printf("Digite la palabra que desea reemplazar: ");
+        gets(palabra);
+
+        printf("\nPor cual palabra desea reemplazarla: ");
+        gets(palabrapor);
+
+        buscar_remplazar(texto,palabra,palabrapor);
+        puts(texto);
     }
 
     free(texto);
 
     return 0;
 }
+
+

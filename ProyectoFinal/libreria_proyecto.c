@@ -43,13 +43,18 @@ void corregir_acentos(char *texto)
         {
             texto[i]=161;
         }
-        /*if(texto[i]=='o' && texto[i+1]=='n' && (texto[i+2]=='.' || texto[i+2]==32 || texto[i+2]=='\n') && cl>2)
+        if(texto[i]=='o' && texto[i+1]=='n' && (texto[i+2]=='.' || texto[i+2]==32 || texto[i+2]=='\n') && cl>2)
         {
             texto[i]=162;
-        }*/
+        }
         if(texto[i]=='u' && texto[i+1]=='n' && (texto[i+2]=='.' || texto[i+2]==32 || texto[i+2]=='\n') && cl>2)
         {
             texto[i]=163;
+        }
+        /*Para acento en las palabras terminadas en ia*/
+         if(texto[i]=='i' && texto[i+1]=='a' && (texto[i+2]=='s' || texto[i+2]=='.' || texto[i+2]==' ' || texto[i+2]=='\n'))
+        {
+            texto[i]=161;
         }
         if(texto[i]==32 || texto[i]=='\n')
         {
@@ -61,30 +66,32 @@ void corregir_acentos(char *texto)
 void sangria(char *texto)
 {
     //IGNORAR: TRABAJANDO EN ESTA FUNCION
-    int cont=0, M=(strlen(texto)+2);
-    char aux[2]={'\t'}, tab[100]={'\t'};
+    int cont=0;
+
+    char tab[1000]={'\t'};
 
     for(int i=0; texto[i]!='\0';i++)
     {
-        //strcpy(tab,aux);
-
-        texto= (char*)realloc(texto,(M+cont)*sizeof(char));
+        texto= (char*)realloc(texto,((strlen(texto)+2+cont)*sizeof(char)));
         if(i==0)
         {
-            //tab=(char*)malloc(M*sizeof(char));
-            strcat(tab, texto);
-            /*Aca a la cadena tab se le agrega el texto.
-            Esto para la sangria a inicio de parrafo*/
-        }
+            strcat(tab,texto);
 
+            //Aca a la cadena tab se le agrega el texto.
+            //Esto para la sangria a inicio de parrafo
+
+            strcpy(texto, tab);
+
+            //Texto pasa a tener el valor de tab que es el \t a inicio
+            //con el texto luego
+        }
         /*if(texto[i]=='\n')//Si hay cambio de linea se introducira un \t
         {
             //Asignando memoria para tratar de corregir errores
-            texto= (char*)realloc(texto,(strlen(texto)+cont+2)*sizeof(char));
-            strcat(tab, texto);
+            strcat(tab, &texto[i+1]); //A tab se le añade el texto a partir de la posicion del \n
+            strcpy(&texto[i],tab); //texto a partir de la posicion luego del \n se le agrega tab
             cont++;
         }*/
-        strcpy(texto,tab);
     }
 }
 int contador_palabras(char *texto)
@@ -102,6 +109,10 @@ int contador_palabras(char *texto)
         {
             cont++;
         }
+        /*if(*(texto+(i+1))=='\t')
+        {
+            cont--;
+        }*/
     }
 
     return cont;
@@ -113,7 +124,7 @@ int contador_oraciones(char *texto)
     punto no haya otro punto. También cuenta como oracion luego de salto de línea*/
     for (int i=0; texto[i]!='\0'; i++)
     {
-        if(*(texto+i)=='.' && *(texto+(i+1))!='.')
+        if(*(texto+i)=='.' && (*(texto+(i+1))!='.' || *(texto+(i+1))!='\n'))
         {
             cont++;
         }
@@ -139,4 +150,23 @@ int contador_parrafos(char *texto)
     }
 
     return cont;
+}
+void buscar_remplazar(char *texto, char *palabra, char *palabrapor)
+{
+    int c_letras=strlen(palabra);
+    /*Cuenta la cantidad de letras de la palabra que se buscara*/
+    for(int i=0; texto[i]!='\0'; i++)
+    {
+        if(strnicmp(palabra,&texto[i],c_letras)==0)
+            /*texto en la posicion i se compara con palabra pero solo la cantidad de caracteres de palabra
+            si son iguales retornara 0*/
+        {
+            strcat(palabrapor,&texto[i+c_letras]);
+            /*a la palabra por la que se va a sustituir se le agrega el texto luego de la palabra que se
+            busco*/
+            strcpy(&texto[i],palabrapor);
+            /*texto pasa a tener la palabra por la que se va a sustituir mas el resto del texto luego de la
+            posicion donde estaba la palabra que se busco*/
+        }
+    }
 }

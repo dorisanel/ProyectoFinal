@@ -8,4 +8,5 @@ void sangria(char*);
 int contador_palabras(char*);
 int contador_oraciones(char*);
 int contador_parrafos(char*);
+void buscar_remplazar(char*,char*,char*);
 #endif // libreria_proyecto
