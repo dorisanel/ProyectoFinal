@@ -41,7 +41,6 @@ int main()
     sangria(texto);
 
     puts(texto);
-    printf("\b");/*Para borrar el ctrl Z*/
 
     printf("\n\nCantidad de palabras: %d",contador_palabras(texto));
     printf("\nCantidad de oraciones: %d",contador_oraciones(texto));
@@ -91,5 +90,3 @@ int main()
 
     return 0;
 }
-
-

@@ -1,5 +1,4 @@
 #include "libreria_proyecto.h"
-
 void corregir_mayus(char *texto)
 {
     /*Para convertir la primera letra del texto a mayúscula*/
@@ -27,8 +26,8 @@ void corregir_acentos(char *texto)
 
     int cl=1;
     /*Se encarga de ir contando las letras de cada palabra para no agregar
-               acento a palabras monosílabas*/
-    //PROXIMAMENTE: PERFECCIONAR PARA PALABRAS QUE LLEVAN EXCEPCIONES
+    acento a palabras monosílabas*/
+
     for(int i=0; texto[i]!='\0'; i++)
     {
         if(texto[i]=='a' && texto[i+1]=='n' && (texto[i+2]=='.' || texto[i+2]==32 || texto[i+2]=='\n') && cl>2)
@@ -51,7 +50,7 @@ void corregir_acentos(char *texto)
         {
             texto[i]=163;
         }
-        /*Para acento en las palabras terminadas en ia*/
+        /*Para acento en las palabras terminadas en ia e ias*/
          if(texto[i]=='i' && texto[i+1]=='a' && (texto[i+2]=='s' || texto[i+2]=='.' || texto[i+2]==' ' || texto[i+2]=='\n'))
         {
             texto[i]=161;
@@ -65,10 +64,10 @@ void corregir_acentos(char *texto)
 }
 void sangria(char *texto)
 {
-    //IGNORAR: TRABAJANDO EN ESTA FUNCION
     int cont=0;
+    char aux[50], tab[50]={'\t'};
 
-    char tab[1000]={'\t'};
+    strcpy(aux,tab);
 
     for(int i=0; texto[i]!='\0';i++)
     {
@@ -85,13 +84,14 @@ void sangria(char *texto)
             //Texto pasa a tener el valor de tab que es el \t a inicio
             //con el texto luego
         }
-        /*if(texto[i]=='\n')//Si hay cambio de linea se introducira un \t
+        if(texto[i-1]=='\n')//Si hay cambio de linea se introducira un \t
         {
-            //Asignando memoria para tratar de corregir errores
-            strcat(tab, &texto[i+1]); //A tab se le añade el texto a partir de la posicion del \n
+            strcat(tab, &texto[i]); //A tab se le añade el texto a partir de la posicion del \n
+
             strcpy(&texto[i],tab); //texto a partir de la posicion luego del \n se le agrega tab
             cont++;
-        }*/
+        }
+        strcpy(tab,aux);//tab vuelve a tener su valor inicial
     }
 }
 int contador_palabras(char *texto)
@@ -109,10 +109,6 @@ int contador_palabras(char *texto)
         {
             cont++;
         }
-        /*if(*(texto+(i+1))=='\t')
-        {
-            cont--;
-        }*/
     }
 
     return cont;
@@ -124,7 +120,7 @@ int contador_oraciones(char *texto)
     punto no haya otro punto. También cuenta como oracion luego de salto de línea*/
     for (int i=0; texto[i]!='\0'; i++)
     {
-        if(*(texto+i)=='.' && (*(texto+(i+1))!='.' || *(texto+(i+1))!='\n'))
+        if(*(texto+i)=='.' && *(texto+(i+1))!='.')
         {
             cont++;
         }
@@ -154,6 +150,10 @@ int contador_parrafos(char *texto)
 void buscar_remplazar(char *texto, char *palabra, char *palabrapor)
 {
     int c_letras=strlen(palabra);
+    char aux[50];
+
+    strcpy(aux,palabrapor);
+
     /*Cuenta la cantidad de letras de la palabra que se buscara*/
     for(int i=0; texto[i]!='\0'; i++)
     {
@@ -168,5 +168,6 @@ void buscar_remplazar(char *texto, char *palabra, char *palabrapor)
             /*texto pasa a tener la palabra por la que se va a sustituir mas el resto del texto luego de la
             posicion donde estaba la palabra que se busco*/
         }
+        strcpy(palabrapor,aux);
     }
 }
