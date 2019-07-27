@@ -6,7 +6,7 @@
 
 int main()
 {
-    char *texto, letra, palabra[50], palabrapor[50], tab[50]={'\t'};
+    char *texto, letra, palabra[50], palabrapor[50];
     //comando,guardar_texto[50];
     //FILE *guardad_nuevo;
     int cont=0, busc_remp;
@@ -38,7 +38,7 @@ int main()
 
     corregir_mayus(texto);
     corregir_acentos(texto);
-    sangria(texto,tab);
+    sangria(texto);
 
     puts(texto);
 

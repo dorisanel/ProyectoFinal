@@ -62,11 +62,11 @@ void corregir_acentos(char *texto)
         cl++;
     }
 }
-void sangria(char *texto, char *tab)
+void sangria(char *texto)
 {
     //IGNORAR: TRABAJANDO EN ESTA FUNCION
     int cont=0;
-    char aux[50];
+    char aux[50], tab[50]={'\t'};
 
     strcpy(aux,tab);
 
@@ -109,10 +109,6 @@ int contador_palabras(char *texto)
         if(texto[i]=='\n' && (texto[i+1]!='\n' || texto[i+1]!=' '))
         {
             cont++;
-        }
-        if(*(texto+(i+1))=='\t')
-        {
-            cont--;
         }
     }
 
