@@ -1,3 +1,4 @@
+
 #include "libreria_proyecto.h"
 void corregir_mayus(char *texto)
 {
@@ -171,3 +172,4 @@ void buscar_remplazar(char *texto, char *palabra, char *palabrapor)
         strcpy(palabrapor,aux);
     }
 }
+
