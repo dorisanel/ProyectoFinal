@@ -41,10 +41,6 @@ void corregir_acentos(char *texto)
 
     for(int i=0; texto[i]!='\0'; i++)
     {
-        if(texto[i]=='a' && texto[i+1]=='n' && (texto[i+2]=='.' || texto[i+2]==32 || texto[i+2]=='\n') && cl>2)
-        {
-            texto[i]=160;
-        }
         if(texto[i]=='e' && texto[i+1]=='n' && (texto[i+2]=='.' || texto[i+2]==32 || texto[i+2]=='\n') && cl>2)
         {
             texto[i]=130;
@@ -62,7 +58,7 @@ void corregir_acentos(char *texto)
             texto[i]=163;
         }
         /*Para acento en las palabras terminadas en ia e ias*/
-         if(texto[i]=='i' && texto[i+1]=='a' && (texto[i+2]=='s' || texto[i+2]=='.' || texto[i+2]==' ' || texto[i+2]=='\n'))
+         if(texto[i]=='i' && texto[i+1]=='a' && (texto[i+2]=='n' || texto[i+2]=='s' || texto[i+2]=='.' || texto[i+2]==' ' || texto[i+2]=='\n'))
         {
             texto[i]=161;
         }
@@ -80,6 +76,42 @@ void m_antes_pb(char *texto)
         if(texto[i]=='n' && (texto[i+1]=='b' || texto[i+1]=='p'))
         {
             texto[i]='m';
+        }
+    }
+}
+void c_antes_ei(char *texto)
+{
+    for(int i=0; texto[i]!='\0'; i++)
+    {
+        if(texto[i]=='z' && (texto[i+1]=='e' || texto[i+1]=='i'))
+        {
+            texto[i]='c';
+        }
+    }
+}
+void aje(char *texto)
+{
+    for(int i=0; texto[i]!='\0';i++)
+    {
+        if((texto[i]=='a' || texto[i]=='e') && texto[i+1]=='g'  && texto[i+2]=='e')
+            texto[i+1]='j';
+    }
+}
+void gergir(char *texto)
+{
+    for(int i=0; texto[i]!='\0';i++)
+    {
+        if(texto[i]=='j' && (texto[i+1]=='e' || texto[i+1]=='i') && texto[i+2]=='r')
+            texto[i]='g';
+    }
+}
+void aba(char *texto)
+{
+    for(int i=0;texto[i]!='\0';i++)
+    {
+        if(texto[i]=='a' && texto[i+1]=='v' && texto[i+2]=='a')
+        {
+            texto[i+1]='b';
         }
     }
 }

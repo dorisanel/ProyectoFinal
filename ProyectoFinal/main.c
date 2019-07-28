@@ -11,7 +11,6 @@ int main()
 
     printf("Digite texto: \n");
 
-
     do
     {
         letra=fgetc(stdin);
@@ -29,10 +28,14 @@ int main()
         cont++;
     }while((letra!=EOF));
 
+    m_antes_pb(texto);
+    c_antes_ei(texto);
+    aje(texto);
+    gergir(texto);
+    aba(texto);
     corregir_espacios(texto);
     corregir_mayus(texto);
     corregir_acentos(texto);
-    m_antes_pb(texto);
     sangria(texto);
 
     puts(texto);
