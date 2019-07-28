@@ -1,61 +1,12 @@
 #include "libreria_proyecto.h"
-#define LETRA 62 // asigno el simbolo > para poder digirar comando
-
-void vim (char *texto,FILE *guardar_nuevo,char guardar_texto[50])
+void corregir_espacios(char *texto)
 {
-    printf("\n");
-       char palabra[50], palabrapor[50],comando;
-        char vim [10];
-        FILE *guardad_nuevo;
-
-        comando=getchar(); // espera a que digite un caracter que es el >
-
-        if(comando== LETRA) // Para poder digitar comandos a lo vim
+    for(int i=0; texto[i]!='\0';i++)
     {
-        fflush(stdin);
-        printf("\nDigite un comando\n");
-        gets(vim);
-
-        for(int k=0; vim[k]!='\0'; k++)
+        if(texto[i]==' ' && texto[i+1]==' ')
         {
-
-            if(vim[k]=='w' && vim[k+1]=='q')     //Prueba de usar comando
-            {
-
-                printf("\nEl archivo no existia, por tanto se ha creado!\n");
-                guardad_nuevo=fopen(guardar_texto,"w");
-                fclose(guardad_nuevo);
-
-                guardad_nuevo=fopen(guardar_texto,"a+t");
-
-            }
-            else if(!(guardad_nuevo==NULL))
-            {
-                fwrite(texto,sizeof(texto),10,guardad_nuevo); // preguntar a damaris sobre que debe de ir donde esta el 10
-                printf("Texto guardado con exito!\n");
-
-            }
-
-           /*/ if(vim[k]=='q' && vim==[k+1]=='!')
-            {
-
-                // esto saldria del vim sin guardar nada pero tiene sentido esto?
-
-            }*/
-
-
-            if(vim[k]=='%' && vim[k+1]=='s')
-            {
-                fflush(stdin);
-                printf("Digite la palabra que desea reemplazar: ");
-                gets(palabra);
-
-                printf("\nPor cual palabra desea reemplazarla: ");
-                gets(palabrapor);
-
-                buscar_remplazar(texto,palabra,palabrapor);
-                puts(texto);
-            }
+            strcpy(&texto[i],&texto[i+1]);
+            i--;
         }
     }
 }
@@ -120,6 +71,16 @@ void corregir_acentos(char *texto)
             cl=0;
         }
         cl++;
+    }
+}
+void m_antes_pb(char *texto)
+{
+    for(int i=0; texto[i]!='\0';i++)
+    {
+        if(texto[i]=='n' && (texto[i+1]=='b' || texto[i+1]=='p'))
+        {
+            texto[i]='m';
+        }
     }
 }
 void sangria(char *texto)
@@ -231,4 +192,60 @@ void buscar_remplazar(char *texto, char *palabra, char *palabrapor)
         strcpy(palabrapor,aux);
     }
 }
+void vim (char *texto,FILE *guardar_nuevo,char guardar_texto[50])
+{
+    printf("\n");
+    char palabra[50], palabrapor[50],comando;
+    char vim [10];
 
+    comando=getchar(); // espera a que digite un caracter que es el >
+
+    if(comando== LETRA) // Para poder digitar comandos a lo vim
+    {
+        fflush(stdin);
+        printf("\nDigite un comando\n");
+        gets(vim);
+
+        for(int k=0; vim[k]!='\0'; k++)
+        {
+
+            if(vim[k]=='w' && vim[k+1]=='q')     //Prueba de usar comando
+            {
+
+                printf("\nEl archivo no existia, por tanto se ha creado!\n");
+                guardar_nuevo=fopen(guardar_texto,"w");
+                fclose(guardar_nuevo);
+
+                guardar_nuevo=fopen(guardar_texto,"a+t");
+
+            }
+            else if(!(guardar_nuevo==NULL))
+            {
+                fwrite(texto,sizeof(texto),10,guardar_nuevo); // preguntar a damaris sobre que debe de ir donde esta el 10
+                printf("Texto guardado con exito!\n");
+
+            }
+
+            /*/ if(vim[k]=='q' && vim==[k+1]=='!')
+             {
+
+                 // esto saldria del vim sin guardar nada pero tiene sentido esto?
+
+             }*/
+
+
+            if(vim[k]=='%' && vim[k+1]=='s')
+            {
+                fflush(stdin);
+                printf("Digite la palabra que desea reemplazar: ");
+                gets(palabra);
+
+                printf("\nPor cual palabra desea reemplazarla: ");
+                gets(palabrapor);
+
+                buscar_remplazar(texto,palabra,palabrapor);
+                puts(texto);
+            }
+        }
+    }
+}
