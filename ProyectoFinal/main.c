@@ -47,6 +47,7 @@ int main()
     printf("\nCantidad de oraciones: %d",contador_oraciones(texto));
     printf("\nCantidad de parrafos: %d",contador_parrafos(texto));
 
+    printf("\n");
     comando=getchar(); // espera a que digite un caracter que es el >
 
     if(comando== LETRA) // Para poder digitar comandos a lo vim
@@ -92,6 +93,9 @@ int main()
         }
     }
 
+
+    /*implementar aqui que pregunte si desea continuar, aparte agregar un menu que permita abrir un archivo ya existente para modificar
+     o crear uno nuevo*/
 
     /*  printf("\n\nDesea remplazar alguna palabra? \n1.Si \n2.No\n");
       scanf("%d",&busc_remp);
