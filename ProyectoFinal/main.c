@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "libreria_proyecto.h"
@@ -9,7 +8,7 @@ int main()
 {
     char *texto, letra, palabra[50], palabrapor[50],comando,guardar_texto[50];
     FILE *guardad_nuevo;
-    int cont=0;// busc_remp;
+    int cont=0;
     char vim [10];
 
     printf("Digite el nombre donde se guardar%c el archivo de texto: ",160);
@@ -38,16 +37,15 @@ int main()
 
     corregir_mayus(texto);
     corregir_acentos(texto);
+    m_antes_pb(texto);
     sangria(texto);
 
     puts(texto);
-    printf("\b");/*Para borrar el ctrl Z*/
 
     printf("\n\nCantidad de palabras: %d",contador_palabras(texto));
     printf("\nCantidad de oraciones: %d",contador_oraciones(texto));
     printf("\nCantidad de parrafos: %d",contador_parrafos(texto));
 
-    printf("\n");
     comando=getchar(); // espera a que digite un caracter que es el >
 
     if(comando== LETRA) // Para poder digitar comandos a lo vim
@@ -76,8 +74,6 @@ int main()
 
             }
 
-
-
             if(vim[k]=='r')
             {
                 fflush(stdin);
@@ -92,30 +88,10 @@ int main()
             }
         }
     }
-
-
     /*implementar aqui que pregunte si desea continuar, aparte agregar un menu que permita abrir un archivo ya existente para modificar
      o crear uno nuevo*/
-
-    /*  printf("\n\nDesea remplazar alguna palabra? \n1.Si \n2.No\n");
-      scanf("%d",&busc_remp);
-
-      if(busc_remp==1)
-      {
-          fflush(stdin);
-          printf("Digite la palabra que desea reemplazar: ");
-          gets(palabra);
-
-          printf("\nPor cual palabra desea reemplazarla: ");
-          gets(palabrapor);
-
-          buscar_remplazar(texto,palabra,palabrapor);
-          puts(texto);
-      }*/
 
     free(texto);
 
     return 0;
 }
-
-

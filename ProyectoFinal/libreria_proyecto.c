@@ -1,4 +1,3 @@
-
 #include "libreria_proyecto.h"
 void corregir_mayus(char *texto)
 {
@@ -61,6 +60,16 @@ void corregir_acentos(char *texto)
             cl=0;
         }
         cl++;
+    }
+}
+void m_antes_pb(char *texto)
+{
+    for(int i=0; texto[i]!='\0';i++)
+    {
+        if(texto[i]=='n' && (texto[i+1]=='b' || texto[i+1]=='p'))
+        {
+            texto[i]='m';
+        }
     }
 }
 void sangria(char *texto)
@@ -172,4 +181,3 @@ void buscar_remplazar(char *texto, char *palabra, char *palabrapor)
         strcpy(palabrapor,aux);
     }
 }
-
