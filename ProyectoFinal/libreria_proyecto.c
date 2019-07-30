@@ -410,21 +410,35 @@ int vim (char *texto)
     }
     else if(strcmp(vim,"a")==0)
     {
-        printf("digite el nombre del archivo\n");
+       char lectura;
+        printf("digite el nombre del archivo\n\n");
         gets(guardar_texto);
+         guardar_nuevo=fopen(guardar_texto,"r");
+
+        while(feof(guardar_nuevo)==0) /*este bucle va imprimedo letra por letra hasta que llega
+                                        al final del archivo*/
+        {
+            lectura=fgetc(guardar_nuevo);
+            printf("%c",lectura);
+        }
+
+        fclose(guardar_nuevo); /*se cierra para volverlo abrir en modo que se pueda escribir*/
         guardar_nuevo=fopen(guardar_texto,"a");
-        printf("Digite\n");
+        printf("\n\nDigite\n");
         gets(texto);
         fprintf(guardar_nuevo,texto);
         fclose(guardar_nuevo);
         return 0;
+
     }
 
     return -1;/*Si llega a retornar -1 se digito un comando no existente*/
 }
+
 void imprimir_cantidad(char *texto)
 {
     printf("\n\nCantidad de palabras: %d",contador_palabras(texto));
     printf("\nCantidad de oraciones: %d",contador_oraciones(texto));
     printf("\nCantidad de parrafos: %d",contador_parrafos(texto));
 }
+
