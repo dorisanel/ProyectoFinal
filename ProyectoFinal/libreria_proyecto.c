@@ -41,10 +41,6 @@ void corregir_acentos(char *texto)
 
     for(int i=0; texto[i]!='\0'; i++)
     {
-        if(texto[i]=='e' && texto[i+1]=='n' && (texto[i+2]=='.' || texto[i+2]==32 || texto[i+2]=='\n') && cl>2)
-        {
-            texto[i]=130;
-        }
         if(texto[i]=='i' && texto[i+1]=='n' && (texto[i+2]=='.' || texto[i+2]==32 || texto[i+2]=='\n') && cl>2)
         {
             texto[i]=161;
@@ -118,7 +114,7 @@ void aba(char *texto)
 void sangria(char *texto)
 {
     int cont=0;
-    char aux[50], tab[50]={'\t'};
+    char aux[1000], tab[1000]={'\t'};
 
     strcpy(aux,tab);
 
@@ -202,12 +198,11 @@ int contador_parrafos(char *texto)
 }
 void buscar_remplazar(char *texto, char *palabra, char *palabrapor)
 {
-    int c_letras=strlen(palabra);
-    char aux[50];
+    int c_letras=strlen(palabra);/*Cuenta la cantidad de letras de la palabra que se buscara*/
+    char aux[1000];
 
     strcpy(aux,palabrapor);
 
-    /*Cuenta la cantidad de letras de la palabra que se buscara*/
     for(int i=0; texto[i]!='\0'; i++)
     {
         if(strnicmp(palabra,&texto[i],c_letras)==0)
@@ -224,60 +219,86 @@ void buscar_remplazar(char *texto, char *palabra, char *palabrapor)
         strcpy(palabrapor,aux);
     }
 }
-void vim (char *texto,FILE *guardar_nuevo,char guardar_texto[50])
+void insertar(char *texto)
+{
+    char palabra[100];
+
+    printf("Digite lo que desea insertar: ");
+    gets(palabra);
+
+    strcat(texto,palabra);
+}
+void borrar_linea(char *texto)
+{
+   printf("say sike right now");
+}
+int vim (char *texto,FILE *guardar_nuevo,char guardar_texto[50])
 {
     printf("\n");
-    char palabra[50], palabrapor[50],comando;
+    char palabra[50], palabrapor[50];
     char vim [10];
 
-    comando=getchar(); // espera a que digite un caracter que es el >
+    fflush(stdin);
+    printf("\n\t\t\t\t MODO COMANDO \n");
+    gets(vim);
 
-    if(comando== LETRA) // Para poder digitar comandos a lo vim
+    if(strcmp(vim,"wq")==0)     //Prueba de usar comando
+    {
+        printf("\nEl archivo no existia, por tanto se ha creado!\n");
+        guardar_nuevo=fopen(guardar_texto,"r");
+        fclose(guardar_nuevo);
+
+        if(!(guardar_nuevo==NULL))
+        {
+            fclose(guardar_nuevo);
+            guardar_nuevo=fopen(guardar_texto,"w+t");
+            fputs(texto,guardar_nuevo);
+            printf("Texto guardado con exito!\n");
+            fclose(guardar_nuevo);
+        }
+        else
+        {
+            fclose(guardar_nuevo);
+            guardar_nuevo=fopen(guardar_texto,"a+t");
+            fputs(texto,guardar_nuevo);
+            printf("Texto guardado con exito!\n");
+            fclose(guardar_nuevo);
+        }
+
+        return 0;
+    }
+
+    else if(strcmp(vim,"i")==0)
+
+    {
+        insertar(texto);
+        return 0;
+    }
+
+    else if(strcmp(vim,"q!")==0)
+    {
+        return 0;
+    }
+
+    else if(strcmp(vim,"%s")==0)
     {
         fflush(stdin);
-        printf("\nDigite un comando\n");
-        gets(vim);
+        printf("Digite la palabra que desea reemplazar: ");
+        gets(palabra);
 
-        for(int k=0; vim[k]!='\0'; k++)
-        {
+        printf("\nPor cual palabra desea reemplazarla: ");
+        gets(palabrapor);
 
-            if(vim[k]=='w' && vim[k+1]=='q')     //Prueba de usar comando
-            {
+        buscar_remplazar(texto,palabra,palabrapor);
+        puts(texto);
 
-                printf("\nEl archivo no existia, por tanto se ha creado!\n");
-                guardar_nuevo=fopen(guardar_texto,"w");
-                fclose(guardar_nuevo);
-
-                guardar_nuevo=fopen(guardar_texto,"a+t");
-
-            }
-            else if(!(guardar_nuevo==NULL))
-            {
-                fwrite(texto,sizeof(texto),10,guardar_nuevo); // preguntar a damaris sobre que debe de ir donde esta el 10
-                printf("Texto guardado con exito!\n");
-
-            }
-
-            /*/ if(vim[k]=='q' && vim==[k+1]=='!')
-             {
-
-                 // esto saldria del vim sin guardar nada pero tiene sentido esto?
-
-             }*/
-
-
-            if(vim[k]=='%' && vim[k+1]=='s')
-            {
-                fflush(stdin);
-                printf("Digite la palabra que desea reemplazar: ");
-                gets(palabra);
-
-                printf("\nPor cual palabra desea reemplazarla: ");
-                gets(palabrapor);
-
-                buscar_remplazar(texto,palabra,palabrapor);
-                puts(texto);
-            }
-        }
+        return 0;
     }
+    else if(strcmp(vim,"dd")==0)
+    {
+        borrar_linea(texto);
+        return 0;
+    }
+
+    return -1;/*Si llega a retornar -1 se digito un comando no existente*/
 }

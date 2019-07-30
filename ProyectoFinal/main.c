@@ -25,8 +25,19 @@ int main()
         if(letra==EOF)
             *(texto+cont) ='\0';
 
+
+        if(letra==LETRA)
+        {
+            cont--;
+            if(vim(texto,guardar_nuevo,guardar_texto)==-1)
+            {
+                printf("ERROR!! El comando digitado no existe!\n");
+            }
+        }
+
         cont++;
-    }while((letra!=EOF));
+    }
+    while((letra!=EOF));
 
     m_antes_pb(texto);
     c_antes_ei(texto);
@@ -44,7 +55,10 @@ int main()
     printf("\nCantidad de oraciones: %d",contador_oraciones(texto));
     printf("\nCantidad de parrafos: %d",contador_parrafos(texto));
 
-    vim(texto,guardar_nuevo,guardar_texto);
+    if(vim(texto,guardar_nuevo,guardar_texto)==-1)
+    {
+        printf("ERROR!! El comando digitado no existe!\n");
+    }
 
     /*implementar aqui que pregunte si desea continuar, aparte agregar un menu que permita abrir un archivo ya existente para modificar
      o crear uno nuevo*/

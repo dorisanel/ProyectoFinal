@@ -16,5 +16,7 @@ int contador_palabras(char*);
 int contador_oraciones(char*);
 int contador_parrafos(char*);
 void buscar_remplazar(char*,char*,char*);
-void vim(char *,FILE *,char[]);
+void insertar(char*);
+void borrar_linea(char*);
+int vim(char *,FILE *,char[]);
 #endif // libreria_proyecto
