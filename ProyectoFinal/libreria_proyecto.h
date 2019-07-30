@@ -19,6 +19,7 @@ int contador_parrafos(char*);
 void buscar_remplazar(char*,char*,char*);
 void insertar(char*);
 void borrar_linea(char*);
+void eliminar_caracter(char*);
 int vim(char*);
 void imprimir_cantidad(char*);
 #endif // libreria_proyecto

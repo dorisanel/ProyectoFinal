@@ -4,7 +4,7 @@ char* leer()
     char *texto, letra;
     int cont=0;
 
-        do
+    do
     {
         letra=fgetc(stdin);
         if(cont==0)
@@ -20,7 +20,7 @@ char* leer()
 
         if(letra==LETRA)
         {
-            cont--;
+            cont--;/*Para que no se guarde el caracter >*/
             if(vim(texto)==-1)
             {
                 printf("ERROR!! El comando digitado no existe!\n");
@@ -34,7 +34,7 @@ char* leer()
 }
 void corregir_espacios(char *texto)
 {
-    for(int i=0; texto[i]!='\0';i++)
+    for(int i=0; texto[i]!='\0'; i++)
     {
         if(texto[i]==' ' && texto[i+1]==' ')
         {
@@ -87,7 +87,7 @@ void corregir_acentos(char *texto)
             texto[i]=163;
         }
         /*Para acento en las palabras terminadas en ia e ias*/
-         if(texto[i]=='i' && texto[i+1]=='a' && (texto[i+2]=='n' || texto[i+2]=='s' || texto[i+2]=='.' || texto[i+2]==' ' || texto[i+2]=='\n'))
+        if(texto[i]=='i' && texto[i+1]=='a' && (texto[i+2]=='n' || texto[i+2]=='s' || texto[i+2]=='.' || texto[i+2]==' ' || texto[i+2]=='\n'))
         {
             texto[i]=161;
         }
@@ -100,7 +100,7 @@ void corregir_acentos(char *texto)
 }
 void m_antes_pb(char *texto)
 {
-    for(int i=0; texto[i]!='\0';i++)
+    for(int i=0; texto[i]!='\0'; i++)
     {
         if(texto[i]=='n' && (texto[i+1]=='b' || texto[i+1]=='p'))
         {
@@ -120,7 +120,7 @@ void c_antes_ei(char *texto)
 }
 void aje(char *texto)
 {
-    for(int i=0; texto[i]!='\0';i++)
+    for(int i=0; texto[i]!='\0'; i++)
     {
         if((texto[i]=='a' || texto[i]=='e') && texto[i+1]=='g'  && texto[i+2]=='e')
             texto[i+1]='j';
@@ -128,7 +128,7 @@ void aje(char *texto)
 }
 void gergir(char *texto)
 {
-    for(int i=0; texto[i]!='\0';i++)
+    for(int i=0; texto[i]!='\0'; i++)
     {
         if(texto[i]=='j' && (texto[i+1]=='e' || texto[i+1]=='i') && texto[i+2]=='r')
             texto[i]='g';
@@ -136,7 +136,7 @@ void gergir(char *texto)
 }
 void aba(char *texto)
 {
-    for(int i=0;texto[i]!='\0';i++)
+    for(int i=0; texto[i]!='\0'; i++)
     {
         if(texto[i]=='a' && texto[i+1]=='v' && texto[i+2]=='a')
         {
@@ -147,11 +147,11 @@ void aba(char *texto)
 void sangria(char *texto)
 {
     int cont=0;
-    char aux[1000], tab[1000]={'\t'};
+    char aux[1000], tab[1000]= {'\t'};
 
     strcpy(aux,tab);
 
-    for(int i=0; texto[i]!='\0';i++)
+    for(int i=0; texto[i]!='\0'; i++)
     {
         texto= (char*)realloc(texto,((strlen(texto)+2+cont)*sizeof(char)));
         if(i==0)
@@ -269,7 +269,7 @@ void borrar_linea(char *texto)
     printf("Digite la l%cnea que desea borrar: ",161);
     scanf("%d",&n);
 
-    for(i=0; texto[i]!='\0';i++)
+    for(i=0; texto[i]!='\0'; i++)
     {
         cl++;
         if(texto[i]=='\n')
@@ -288,6 +288,21 @@ void borrar_linea(char *texto)
                 strcat(texto,aux);
             }
             cl=0;
+        }
+    }
+    puts(texto);
+}
+void eliminar_caracter(char *texto)
+{
+    char c[50];
+    printf("Digite el caracter o palabra que desea eliminar: ");
+    gets(c);
+
+    for(int i=0; texto[i]!='\0'; i++)
+    {
+        if(strnicmp(&texto[i],c,strlen(c))==0)
+        {
+            strcpy(&texto[i],&texto[i+strlen(c)]);
         }
     }
     puts(texto);
@@ -334,8 +349,7 @@ int vim (char *texto)
         return 0;
     }
 
-    else if(strcmp(vim,"i")==0)
-
+    else if(strcmp(vim,"i")==0 || strcmp(vim,"a")==0)
     {
         insertar(texto);
         return 0;
@@ -365,8 +379,13 @@ int vim (char *texto)
         borrar_linea(texto);
         return 0;
     }
+    else if(strcmp(vim,"x")==0)
+    {
+        eliminar_caracter(texto);
+        return 0;
+    }
+               /*EN PROCESO*/
 
-            /*EN PROCESO*/
     else if(strcmp(vim,"p")==0)
     {
         printf("digite el nombre del archivo\n");
