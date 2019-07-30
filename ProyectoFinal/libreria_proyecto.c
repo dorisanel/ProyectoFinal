@@ -292,6 +292,25 @@ void borrar_linea(char *texto)
     }
     puts(texto);
 }
+void borrar_despues_linea(char *texto)
+{
+    int n,cont=1,i;
+    printf("Digite luego de que l%cnea desea borrar: ",161);
+    scanf("%d",&n);
+
+    for(i=0; texto[i]!='\0'; i++)
+    {
+        if(texto[i]=='\n')
+        {
+            if(n==cont)
+            {
+                strcpy(&texto[i],"\0");
+            }
+            cont++;
+        }
+    }
+    puts(texto);
+}
 void eliminar_caracter(char *texto)
 {
     char c[50];
@@ -349,7 +368,7 @@ int vim (char *texto)
         return 0;
     }
 
-    else if(strcmp(vim,"i")==0 || strcmp(vim,"a")==0)
+    else if(strcmp(vim,"i")==0)
     {
         insertar(texto);
         return 0;
@@ -379,14 +398,17 @@ int vim (char *texto)
         borrar_linea(texto);
         return 0;
     }
+    else if(strcmp(vim,"d")==0)
+    {
+        borrar_despues_linea(texto);
+        return 0;
+    }
     else if(strcmp(vim,"x")==0)
     {
         eliminar_caracter(texto);
         return 0;
     }
-               /*EN PROCESO*/
-
-    else if(strcmp(vim,"p")==0)
+    else if(strcmp(vim,"a")==0)
     {
         printf("digite el nombre del archivo\n");
         gets(guardar_texto);
