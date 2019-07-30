@@ -366,6 +366,19 @@ int vim (char *texto)
         return 0;
     }
 
+            /*EN PROCESO*/
+    else if(strcmp(vim,"p")==0)
+    {
+        printf("digite el nombre del archivo\n");
+        gets(guardar_texto);
+        guardar_nuevo=fopen(guardar_texto,"a");
+        printf("Digite\n");
+        gets(texto);
+        fprintf(guardar_nuevo,texto);
+        fclose(guardar_nuevo);
+        return 0;
+    }
+
     return -1;/*Si llega a retornar -1 se digito un comando no existente*/
 }
 void imprimir_cantidad(char *texto)
