@@ -1,4 +1,37 @@
 #include "libreria_proyecto.h"
+char* leer()
+{
+    char *texto, letra;
+    int cont=0;
+
+        do
+    {
+        letra=fgetc(stdin);
+        if(cont==0)
+            texto = (char*)malloc(1*sizeof(char));
+
+        else
+            texto = (char*)realloc(texto,(cont+1)*sizeof(char));
+
+        *(texto+cont) = letra;
+
+        if(letra==EOF)
+            *(texto+cont) ='\0';
+
+        if(letra==LETRA)
+        {
+            cont--;
+            if(vim(texto)==-1)
+            {
+                printf("ERROR!! El comando digitado no existe!\n");
+            }
+        }
+        cont++;
+    }
+    while((letra!=EOF));
+
+    return texto;
+}
 void corregir_espacios(char *texto)
 {
     for(int i=0; texto[i]!='\0';i++)
@@ -227,6 +260,7 @@ void insertar(char *texto)
     gets(palabra);
 
     strcat(texto,palabra);
+    puts(texto);
 }
 void borrar_linea(char *texto)
 {
@@ -307,4 +341,10 @@ int vim (char *texto)
     }
 
     return -1;/*Si llega a retornar -1 se digito un comando no existente*/
+}
+void imprimir_cantidad(char *texto)
+{
+    printf("\n\nCantidad de palabras: %d",contador_palabras(texto));
+    printf("\nCantidad de oraciones: %d",contador_oraciones(texto));
+    printf("\nCantidad de parrafos: %d",contador_parrafos(texto));
 }

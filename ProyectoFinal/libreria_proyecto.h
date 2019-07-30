@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #define LETRA 62 // asigno el simbolo > para poder digirar comando
+char *leer();
 void corregir_espacios(char*);
 void corregir_mayus(char*);
 void corregir_acentos(char*);
@@ -19,4 +20,5 @@ void buscar_remplazar(char*,char*,char*);
 void insertar(char*);
 void borrar_linea(char*);
 int vim(char*);
+void imprimir_cantidad(char*);
 #endif // libreria_proyecto
