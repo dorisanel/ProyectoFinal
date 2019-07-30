@@ -264,27 +264,30 @@ void insertar(char *texto)
 }
 void borrar_linea(char *texto)
 {
-    int n,cont=1;
+    int n,cont=1,i,cl=0;
     char aux[1000];
     printf("Digite la l%cnea que desea borrar: ",161);
     scanf("%d",&n);
 
-    if(n==cont)
+    for(i=0; texto[i]!='\0';i++)
     {
-        printf("lemi think");
-    }
-
-    for(int i=0; texto[i]!='\0';i++)
-    {
+        cl++;
         if(texto[i]=='\n')
         {
-            cont++;
-            if(cont==n)
+            if(n==1)
             {
-                strcpy(aux,&texto[strlen(&texto[i])]);
-                strcpy(&texto[i],"\0");
+                strcpy(aux,&texto[i+1]);
+                strcpy(texto,"\0");
                 strcat(texto,aux);
             }
+            cont++;
+            if(cont==n+1)
+            {
+                strcpy(aux,&texto[i]);
+                strcpy(&texto[i-cl],"\0");
+                strcat(texto,aux);
+            }
+            cl=0;
         }
     }
     puts(texto);
