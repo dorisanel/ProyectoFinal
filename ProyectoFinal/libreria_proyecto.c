@@ -264,7 +264,30 @@ void insertar(char *texto)
 }
 void borrar_linea(char *texto)
 {
-   printf("say sike right now");
+    int n,cont=1;
+    char aux[1000];
+    printf("Digite la l%cnea que desea borrar: ",161);
+    scanf("%d",&n);
+
+    if(n==cont)
+    {
+        printf("lemi think");
+    }
+
+    for(int i=0; texto[i]!='\0';i++)
+    {
+        if(texto[i]=='\n')
+        {
+            cont++;
+            if(cont==n)
+            {
+                strcpy(aux,&texto[strlen(&texto[i])]);
+                strcpy(&texto[i],"\0");
+                strcat(texto,aux);
+            }
+        }
+    }
+    puts(texto);
 }
 int vim (char *texto)
 {
