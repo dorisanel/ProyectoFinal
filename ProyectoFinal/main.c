@@ -1,13 +1,8 @@
 #include "libreria_proyecto.h"
 int main()
 {
-    char *texto, letra,guardar_texto[50];
-    FILE *guardar_nuevo;
+    char *texto, letra;
     int cont=0;
-
-    printf("Digite el nombre donde se guardar%c el archivo de texto: ",160);
-    gets(guardar_texto);
-    guardar_nuevo=fopen(guardar_texto,"rt");
 
     printf("Digite texto: \n");
 
@@ -25,16 +20,14 @@ int main()
         if(letra==EOF)
             *(texto+cont) ='\0';
 
-
         if(letra==LETRA)
         {
             cont--;
-            if(vim(texto,guardar_nuevo,guardar_texto)==-1)
+            if(vim(texto)==-1)
             {
                 printf("ERROR!! El comando digitado no existe!\n");
             }
         }
-
         cont++;
     }
     while((letra!=EOF));
@@ -55,7 +48,7 @@ int main()
     printf("\nCantidad de oraciones: %d",contador_oraciones(texto));
     printf("\nCantidad de parrafos: %d",contador_parrafos(texto));
 
-    if(vim(texto,guardar_nuevo,guardar_texto)==-1)
+    if(vim(texto)==-1)
     {
         printf("ERROR!! El comando digitado no existe!\n");
     }

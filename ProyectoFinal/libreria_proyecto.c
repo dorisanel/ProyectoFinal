@@ -232,8 +232,10 @@ void borrar_linea(char *texto)
 {
    printf("say sike right now");
 }
-int vim (char *texto,FILE *guardar_nuevo,char guardar_texto[50])
+int vim (char *texto)
 {
+    FILE *guardar_nuevo;
+    char guardar_texto[50];
     printf("\n");
     char palabra[50], palabrapor[50];
     char vim [10];
@@ -244,6 +246,10 @@ int vim (char *texto,FILE *guardar_nuevo,char guardar_texto[50])
 
     if(strcmp(vim,"wq")==0)     //Prueba de usar comando
     {
+        printf("Digite el nombre donde se guardar%c el archivo de texto: ",160);
+        gets(guardar_texto);
+        guardar_nuevo=fopen(guardar_texto,"rt");
+
         printf("\nEl archivo no existia, por tanto se ha creado!\n");
         guardar_nuevo=fopen(guardar_texto,"r");
         fclose(guardar_nuevo);
