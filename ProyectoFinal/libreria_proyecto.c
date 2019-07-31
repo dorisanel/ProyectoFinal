@@ -87,7 +87,7 @@ void corregir_acentos(char *texto)
             texto[i]=163;
         }
         /*Para acento en las palabras terminadas en ia e ias*/
-        if(texto[i]=='i' && texto[i+1]=='a' && (texto[i+2]=='n' || texto[i+2]=='s' || texto[i+2]=='.' || texto[i+2]==' ' || texto[i+2]=='\n') && strncmp(&texto[i-4],"gracias",7))
+        if(texto[i]=='i' && texto[i+1]=='a' && (texto[i+2]=='n' || texto[i+2]=='s' || texto[i+2]=='.' || texto[i+2]==' ' || texto[i+2]=='\n') && strnicmp(&texto[i-4],"gracias",7)!=0 && strnicmp(&texto[i-6],"gimnasia",8)!=0)
         {
             texto[i]=161;
         }
@@ -245,7 +245,7 @@ int contador_palabras(char *texto)
         {
             cont++;
         }
-        if(texto[i]=='\n' && (texto[i+2]!='\n' && texto[i+2]!=' ' && texto[i+2]!='\t'))
+        if(texto[i]=='\n' && texto[i+2]!='\n')
         {
             cont++;
         }
