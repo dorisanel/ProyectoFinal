@@ -87,7 +87,7 @@ void corregir_acentos(char *texto)
             texto[i]=163;
         }
         /*Para acento en las palabras terminadas en ia e ias*/
-        if(texto[i]=='i' && texto[i+1]=='a' && (texto[i+2]=='n' || texto[i+2]=='s' || texto[i+2]=='.' || texto[i+2]==' ' || texto[i+2]=='\n'))
+        if(texto[i]=='i' && texto[i+1]=='a' && (texto[i+2]=='n' || texto[i+2]=='s' || texto[i+2]=='.' || texto[i+2]==' ' || texto[i+2]=='\n') && strncmp(&texto[i-4],"gracias",7))
         {
             texto[i]=161;
         }
@@ -115,6 +115,50 @@ void c_antes_ei(char *texto)
         if(texto[i]=='z' && (texto[i+1]=='e' || texto[i+1]=='i'))
         {
             texto[i]='c';
+        }
+    }
+}
+void h_a_inicio(char *texto)
+{
+    int cl=0;
+    char aux[1000];
+    for(int i=0; texto[i]!='\0';i++)
+    {
+        cl++;
+        if((strnicmp(&texto[i],"ipo",3)==0 || strnicmp(&texto[i],"idro",4)==0 || strnicmp(&texto[i],"iper",4)==0 || strnicmp(&texto[i],"ia",2)==0 || strnicmp(&texto[i],"ie",2)==0) && cl==1)
+        {
+            strcpy(aux,&texto[i]);
+            strcpy(&texto[i],"h");
+            strcat(texto,aux);
+        }
+        if((strnicmp(&texto[i],"ue",2)==0 || strnicmp(&texto[i],"ui",2)==0 || strnicmp(&texto[i],"um",2)==0)&& cl==1)
+        {
+            strcpy(aux,&texto[i]);
+            strcpy(&texto[i],"h");
+            strcat(texto,aux);
+        }
+        if(texto[i]==' ' || texto[i]=='\n')
+        {
+            cl=0;
+        }
+    }
+}
+void doble_l(char *texto)
+{
+    int cl=0;
+    char aux[1000];
+    for(int i=0;texto[i]!='\0';i++)
+    {
+        cl++;
+        if((strnicmp(&texto[i],"foy",3)==0 || strnicmp(&texto[i],"fay",3)==0 || strnicmp(&texto[i],"fuy",3)==0)&& cl==1)
+        {
+            strcpy(aux,&texto[i+3]);
+            strcpy(&texto[i+2],"ll");
+            strcat(texto,aux);
+        }
+        if(texto[i]==' ' || texto[i]=='\n')
+        {
+            cl=0;
         }
     }
 }

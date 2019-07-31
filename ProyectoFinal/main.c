@@ -9,6 +9,8 @@ int main()
 
     m_antes_pb(texto);
     c_antes_ei(texto);
+    h_a_inicio(texto);
+    doble_l(texto);
     aje(texto);
     gergir(texto);
     aba(texto);
