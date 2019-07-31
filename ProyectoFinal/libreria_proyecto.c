@@ -360,17 +360,14 @@ void borrar_despues_linea(char *texto)
     {
         if(texto[i]=='\n')
         {
-
             if(n==cont)
-
-            /*Cuando cont es igual al numero digitado por el usuario
-            se copia el \0 a esa posicion por lo que se borra todo y solo queda
-            ese texto*/
-
             {
 
-            strcpy(&texto[i],"\0");
+                /*Cuando cont es igual al numero digitado por el usuario
+                se copia el \0 a esa posicion por lo que se borra todo y solo queda
+                ese texto*/
 
+                strcpy(&texto[i],"\0");
             }
             cont++;
         }
@@ -385,9 +382,11 @@ void eliminar_caracter(char *texto)
 
     for(int i=0; texto[i]!='\0'; i++)
     {
-        /*aqui compara, si encutra la letra o la palabra digitada esta se elimina con un strcopy*/
         if(strnicmp(&texto[i],c,strlen(c))==0)
         {
+
+            /*aqui compara, si encutra la letra o la palabra digitada esta se elimina con un strcopy*/
+
             strcpy(&texto[i],&texto[i+strlen(c)]);
         }
     }
@@ -405,11 +404,12 @@ int vim (char *texto)
     printf("\n\t\t\t\t MODO COMANDO \n");
     gets(vim);
 
-    if(strcmp(vim,"wq")==0)
+    if(strcmp(vim,"wq")==0)     //Prueba de usar comando
     {
-        printf("Digite el nombre donde se guardar%c el archivo de texto, poner '.txt' al final: ",160);
+        printf("Digite el nombre donde se guardar%c el archivo de texto: ",160);
         gets(guardar_texto);
-        guardar_nuevo=fopen(guardar_texto,"rt");/*Se crea el archivo con el nombre digitado por el usuario*/
+        strcat(guardar_texto,".txt");/*Para que el usuario no tenga que digitar el .txt*/
+        guardar_nuevo=fopen(guardar_texto,"rt");
 
         printf("\nEl archivo no existia, por tanto se ha creado!\n");
         guardar_nuevo=fopen(guardar_texto,"r");
@@ -418,7 +418,7 @@ int vim (char *texto)
         if(!(guardar_nuevo==NULL))
         {
             fclose(guardar_nuevo);
-            guardar_nuevo=fopen(guardar_texto,"w+t"); /*Aqui se vuelve abrir en modo escritura para guardarel texto digitado anteriormente*/
+            guardar_nuevo=fopen(guardar_texto,"w+t");
             fputs(texto,guardar_nuevo);
             printf("Texto guardado con exito!\n");
             fclose(guardar_nuevo);
@@ -478,23 +478,30 @@ int vim (char *texto)
     else if(strcmp(vim,"a")==0)
     {
         char lectura;
-        printf("\nDigite el nombre del archivo, poner '.txt' al final: ");
+        printf("\nDigite el nombre del archivo: ");
         gets(guardar_texto);
+        strcat(guardar_texto,".txt");/*Para que el usuario no tenga que digitar el .txt*/
         guardar_nuevo=fopen(guardar_texto,"r");
 
-        while(feof(guardar_nuevo)==0) /*este bucle va imprimedo letra por letra hasta que llega
-                                        al final del archivo*/
+        if(guardar_nuevo!=NULL)/*Si el contenido en guardar nuevo es diferente de NULL*/
         {
-            lectura=fgetc(guardar_nuevo);
-            printf("%c",lectura);
-        }
+            while(feof(guardar_nuevo)==0) /*este bucle va imprimedo letra por letra hasta que llega
+                                        al final del archivo*/
+            {
+                lectura=fgetc(guardar_nuevo);
+                printf("%c",lectura);
+            }
 
-        fclose(guardar_nuevo); /*se cierra para volverlo abrir en modo que se pueda escribir*/
-        guardar_nuevo=fopen(guardar_texto,"a");
-        printf("\n\nDigite\n");
-        gets(texto);
-        fprintf(guardar_nuevo,texto);
-        fclose(guardar_nuevo);
+            fclose(guardar_nuevo); /*se cierra para volverlo abrir en modo que se pueda escribir*/
+            guardar_nuevo=fopen(guardar_texto,"a");
+            printf("\n\nDigite\n");
+            gets(texto);
+            fprintf(guardar_nuevo,texto);
+            fclose(guardar_nuevo);
+        }
+        else/*Si no, significa que el archivp digitado no exite*/
+            printf("Ocurri%c un error encontrando el archivo!",162);
+
         return 0;
 
     }

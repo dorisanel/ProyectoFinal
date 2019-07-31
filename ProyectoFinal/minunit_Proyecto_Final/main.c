@@ -4,7 +4,6 @@ char texto[]={"Hola como estas. Yo muy bien gracias.\n"};
 char texto2[]={"Hola     como    estas.\n\t\n\t\n \tYo muy bien  gracias.\n"};
 char texto3[]={"Me encantaria pasar esta materia,\nOjala el profe se apiade de mi.\nSi es con A mucho mejor,\nSe lo agradeceria de corazon.\n"};
 MU_TEST(test_contador_palabras)
-
 {
     mu_assert_int_eq(7,contador_palabras(texto));
     mu_assert_int_eq(7,contador_palabras(texto2));

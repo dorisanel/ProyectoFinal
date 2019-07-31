@@ -13,7 +13,8 @@ int main()
     printf("\t\t x->borra un caracter o una palabra dicha por el usuario\n");
     printf("\t\t q!->sale del modo comando\n\n\n");
 
-
+    system("PAUSE");
+    system("CLS");
 
     printf("Digite texto: \n");
 

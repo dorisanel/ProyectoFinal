@@ -72,28 +72,3 @@
 	<stdio.h>
 	<math.h>
 
-1564535616 source:c:\users\alberto\desktop\proyectofinal\libreria_proyecto.c
-	"libreria_proyecto.h"
-
-1564535616 c:\users\alberto\desktop\proyectofinal\libreria_proyecto.h
-	<string.h>
-	<stdlib.h>
-	<stdio.h>
-
-1564535671 source:c:\users\alberto\desktop\proyectofinal\minunit_proyecto_final\main.c
-	"minunit.h"
-	"../libreria_proyecto.h"
-
-1564535466 c:\users\alberto\desktop\proyectofinal\minunit_proyecto_final\minunit.h
-	<Windows.h>
-	<unistd.h>
-	<time.h>
-	<sys/time.h>
-	<sys/resource.h>
-	<sys/times.h>
-	<string.h>
-	<mach/mach.h>
-	<mach/mach_time.h>
-	<stdio.h>
-	<math.h>
-
