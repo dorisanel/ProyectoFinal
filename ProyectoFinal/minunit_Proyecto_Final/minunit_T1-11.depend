@@ -1,0 +1,74 @@
+# depslib dependency file v1.0
+1559790702 source:c:\users\aneli\onedrive\desktop\algprogm-lab\tarea1-9\funciones_propias.c
+
+1560484254 source:c:\users\aneli\onedrive\desktop\minunit_t1-9\main.c
+	"minunit.h"
+	"../AlgProgm-Lab/Tarea1-9/funciones_propias.h"
+	<math.h>
+
+1560479930 c:\users\aneli\onedrive\desktop\minunit_t1-9\minunit.h
+	<Windows.h>
+	<unistd.h>
+	<time.h>
+	<sys/time.h>
+	<sys/resource.h>
+	<sys/times.h>
+	<string.h>
+	<mach/mach.h>
+	<mach/mach_time.h>
+	<stdio.h>
+	<math.h>
+
+1560480509 c:\users\aneli\onedrive\desktop\minunit_t1-9\funciones_propias.h
+	<math.h>
+
+1559790212 c:\users\aneli\onedrive\desktop\algprogm-lab\tarea1-9\funciones_propias.h
+	<math.h>
+
+1560460937 source:c:\users\aneli\onedrive\desktop\algprogm-lab\tarea1-11\funcion.c
+
+1560703801 source:c:\users\aneli\onedrive\desktop\minunit_t1-11\main.c
+	"minunit.h"
+	"../AlgProgm-Lab/Tarea1-11/funcion.h"
+	<math.h>
+
+1560479930 c:\users\aneli\onedrive\desktop\minunit_t1-11\minunit.h
+	<Windows.h>
+	<unistd.h>
+	<time.h>
+	<sys/time.h>
+	<sys/resource.h>
+	<sys/times.h>
+	<string.h>
+	<mach/mach.h>
+	<mach/mach_time.h>
+	<stdio.h>
+	<math.h>
+
+1560202283 c:\users\aneli\onedrive\desktop\algprogm-lab\tarea1-11\funcion.h
+
+1564534737 source:c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.c
+	"libreria_proyecto.h"
+
+1564517487 c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.h
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1564535277 source:c:\users\aneli\onedrive\desktop\proyectofinal\minunit_proyecto_final\main.c
+	"minunit.h"
+	"../libreria_proyecto.h"
+
+1560479930 c:\users\aneli\onedrive\desktop\proyectofinal\minunit_proyecto_final\minunit.h
+	<Windows.h>
+	<unistd.h>
+	<time.h>
+	<sys/time.h>
+	<sys/resource.h>
+	<sys/times.h>
+	<string.h>
+	<mach/mach.h>
+	<mach/mach_time.h>
+	<stdio.h>
+	<math.h>
+

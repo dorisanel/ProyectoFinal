@@ -187,7 +187,7 @@ int contador_palabras(char *texto)
         {
             cont++;
         }
-        if(texto[i]=='\n' && (texto[i+1]!='\n' || texto[i+1]!=' '))
+        if(texto[i]=='\n' && (texto[i+1]!='\n' && texto[i+1]!=' ' && texto[i+1]!='\t'))
         {
             cont++;
         }
@@ -202,11 +202,11 @@ int contador_oraciones(char *texto)
     punto no haya otro punto. También cuenta como oracion luego de salto de línea*/
     for (int i=0; texto[i]!='\0'; i++)
     {
-        if(*(texto+i)=='.' && *(texto+(i+1))!='.')
+        if(*(texto+i)=='.' && (*(texto+(i+1))!='.' && *(texto+(i+1))!='\n') && texto[i+1]!='\t')
         {
             cont++;
         }
-        if(texto[i]=='\n' && (texto[i+1]!='\n'))
+        if(texto[i]=='\n' && (texto[i+1]!='\n' && texto[i+1]!='\t'))
         {
             cont++;
         }
@@ -221,7 +221,7 @@ int contador_parrafos(char *texto)
      salto de línea no haya otro*/
     for (int i=0; texto[i]!='\0'; i++)
     {
-        if(texto[i]=='\n' && (texto[i+1]!='\n'))
+        if(texto[i]=='\n' && (texto[i+1]!='\n' && texto[i+1]!='\t'))
         {
             cont++;
         }
@@ -410,10 +410,10 @@ int vim (char *texto)
     }
     else if(strcmp(vim,"a")==0)
     {
-       char lectura;
-        printf("digite el nombre del archivo\n\n");
+        char lectura;
+        printf("\nDigite el nombre del archivo: ");
         gets(guardar_texto);
-         guardar_nuevo=fopen(guardar_texto,"r");
+        guardar_nuevo=fopen(guardar_texto,"r");
 
         while(feof(guardar_nuevo)==0) /*este bucle va imprimedo letra por letra hasta que llega
                                         al final del archivo*/
@@ -434,11 +434,9 @@ int vim (char *texto)
 
     return -1;/*Si llega a retornar -1 se digito un comando no existente*/
 }
-
 void imprimir_cantidad(char *texto)
 {
     printf("\n\nCantidad de palabras: %d",contador_palabras(texto));
     printf("\nCantidad de oraciones: %d",contador_oraciones(texto));
     printf("\nCantidad de parrafos: %d",contador_parrafos(texto));
 }
-
