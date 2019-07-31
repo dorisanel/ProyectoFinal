@@ -1,2 +1,3 @@
-Prueba de abriendo archivo a ver klk
-etnonces esto se puede modifcar
+	Esto es una prueba a ver 
+	Si funciona nuestro editor 
+	A ver yo quiero digitar texto aqui

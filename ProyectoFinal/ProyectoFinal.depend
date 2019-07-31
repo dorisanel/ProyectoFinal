@@ -1,38 +1,12 @@
 # depslib dependency file v1.0
-1564539594 source:c:\users\aneli\onedrive\desktop\proyectofinal\main.c
+1564580080 source:c:\users\alber\desktop\proyectofinal\libreria_proyecto.c
 	"libreria_proyecto.h"
 
-1564539594 c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.h
+1564578150 c:\users\alber\desktop\proyectofinal\libreria_proyecto.h
 	<string.h>
 	<stdlib.h>
 	<stdio.h>
 
-1564569552 source:c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.c
-	"libreria_proyecto.h"
-
-1564095405 source:c:\users\alberto\desktop\proyectofinal-master\proyectofinal\libreria_proyecto.c
-	"libreria_proyecto.h"
-	<string.h>
-	<stdlib.h>
-	<stdio.h>
-
-1564094456 c:\users\alberto\desktop\proyectofinal-master\proyectofinal\libreria_proyecto.h
-
-1564104374 source:c:\users\alberto\desktop\proyectofinal-master\proyectofinal\main.c
-	<stdio.h>
-	<stdlib.h>
-	"libreria_proyecto.h"
-
-1564239181 source:c:\users\aneli\downloads\proyectofinal-master\proyectofinal\libreria_proyecto.c
-	"libreria_proyecto.h"
-
-1564238306 c:\users\aneli\downloads\proyectofinal-master\proyectofinal\libreria_proyecto.h
-	<string.h>
-	<stdlib.h>
-	<stdio.h>
-
-1564238596 source:c:\users\aneli\downloads\proyectofinal-master\proyectofinal\main.c
-	<stdio.h>
-	<stdlib.h>
+1564578150 source:c:\users\alber\desktop\proyectofinal\main.c
 	"libreria_proyecto.h"
 

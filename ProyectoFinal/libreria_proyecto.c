@@ -443,6 +443,8 @@ int vim (char *texto)
 
     else if(strcmp(vim,"q!")==0)
     {
+        system("CLS");
+        puts(texto);
         return 0;
     }
 
@@ -495,9 +497,25 @@ int vim (char *texto)
             fclose(guardar_nuevo); /*se cierra para volverlo abrir en modo que se pueda escribir*/
             guardar_nuevo=fopen(guardar_texto,"a");
             printf("\n\nDigite\n");
-            gets(texto);
+            texto=leer();
+
+            m_antes_pb(texto);
+            c_antes_ei(texto);
+            h_a_inicio(texto);
+            doble_l(texto);
+            corregir_x(texto);
+            aje(texto);
+            gergir(texto);
+            aba(texto);
+            corregir_espacios(texto);
+            corregir_mayus(texto);
+            corregir_acentos(texto);
+            sangria(texto);
+            puts(texto);
+
             fprintf(guardar_nuevo,texto);
             fclose(guardar_nuevo);
+            free(texto);
         }
         else/*Si no, significa que el archivp digitado no exite*/
             printf("Ocurri%c un error encontrando el archivo!",162);
