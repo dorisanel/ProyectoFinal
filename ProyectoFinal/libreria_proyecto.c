@@ -162,6 +162,20 @@ void doble_l(char *texto)
         }
     }
 }
+void corregir_x(char *texto)
+{
+    for(int i=0; texto[i]!='\0';i++)
+    {
+        if(strnicmp(&texto[i],"estra",5)==0 && strnicmp(&texto[i],"estrada",7)!=0 && strnicmp(&texto[i],"estrafalario",12)!=0 && strnicmp(&texto[i],"estragar",8)!=0 && strnicmp(&texto[i],"estrangular",11)!=0)
+        {
+            texto[i+1]='x';
+        }
+        if((strnicmp(&texto[i],"espl",4)==0 || strnicmp(&texto[i],"espr",4)==0) && strnicmp(&texto[i],"esplendor",9)!=0 && strnicmp(&texto[i],"esplendido",10)!=0)
+        {
+            texto[i+1]='x';
+        }
+    }
+}
 void aje(char *texto)
 {
     for(int i=0; texto[i]!='\0'; i++)

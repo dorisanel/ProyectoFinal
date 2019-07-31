@@ -11,6 +11,7 @@ int main()
     c_antes_ei(texto);
     h_a_inicio(texto);
     doble_l(texto);
+    corregir_x(texto);
     aje(texto);
     gergir(texto);
     aba(texto);

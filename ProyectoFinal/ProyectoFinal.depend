@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1564538538 source:c:\users\aneli\onedrive\desktop\proyectofinal\main.c
+1564539594 source:c:\users\aneli\onedrive\desktop\proyectofinal\main.c
 	"libreria_proyecto.h"
 
-1564538538 c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.h
+1564539594 c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.h
 	<string.h>
 	<stdlib.h>
 	<stdio.h>
 
-1564537707 source:c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.c
+1564539817 source:c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.c
 	"libreria_proyecto.h"
 
 1564095405 source:c:\users\alberto\desktop\proyectofinal-master\proyectofinal\libreria_proyecto.c

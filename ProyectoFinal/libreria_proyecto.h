@@ -12,6 +12,7 @@ void c_antes_ei(char*);
 void h_a_inicio(char*);
 void aje(char*);
 void doble_l(char*);
+void corregir_x(char*);
 void gergir(char*);
 void aba(char*);
 void sangria(char*);
