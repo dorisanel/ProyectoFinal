@@ -122,7 +122,7 @@ void h_a_inicio(char *texto)
 {
     int cl=0;
     char aux[1000];
-    for(int i=0; texto[i]!='\0';i++)
+    for(int i=0; texto[i]!='\0'; i++)
     {
         cl++;
         if((strnicmp(&texto[i],"ipo",3)==0 || strnicmp(&texto[i],"idro",4)==0 || strnicmp(&texto[i],"iper",4)==0 || strnicmp(&texto[i],"ia",2)==0 || strnicmp(&texto[i],"ie",2)==0) && cl==1)
@@ -147,7 +147,7 @@ void doble_l(char *texto)
 {
     int cl=0;
     char aux[1000];
-    for(int i=0;texto[i]!='\0';i++)
+    for(int i=0; texto[i]!='\0'; i++)
     {
         cl++;
         if((strnicmp(&texto[i],"foy",3)==0 || strnicmp(&texto[i],"fay",3)==0 || strnicmp(&texto[i],"fuy",3)==0)&& cl==1)
@@ -164,7 +164,7 @@ void doble_l(char *texto)
 }
 void corregir_x(char *texto)
 {
-    for(int i=0; texto[i]!='\0';i++)
+    for(int i=0; texto[i]!='\0'; i++)
     {
         if(strnicmp(&texto[i],"estra",5)==0 && strnicmp(&texto[i],"estrada",7)!=0 && strnicmp(&texto[i],"estrafalario",12)!=0 && strnicmp(&texto[i],"estragar",8)!=0 && strnicmp(&texto[i],"estrangular",11)!=0)
         {
@@ -360,9 +360,17 @@ void borrar_despues_linea(char *texto)
     {
         if(texto[i]=='\n')
         {
+
             if(n==cont)
+
+            /*Cuando cont es igual al numero digitado por el usuario
+            se copia el \0 a esa posicion por lo que se borra todo y solo queda
+            ese texto*/
+
             {
-                strcpy(&texto[i],"\0");
+
+            strcpy(&texto[i],"\0");
+
             }
             cont++;
         }
@@ -377,6 +385,7 @@ void eliminar_caracter(char *texto)
 
     for(int i=0; texto[i]!='\0'; i++)
     {
+        /*aqui compara, si encutra la letra o la palabra digitada esta se elimina con un strcopy*/
         if(strnicmp(&texto[i],c,strlen(c))==0)
         {
             strcpy(&texto[i],&texto[i+strlen(c)]);
@@ -396,11 +405,11 @@ int vim (char *texto)
     printf("\n\t\t\t\t MODO COMANDO \n");
     gets(vim);
 
-    if(strcmp(vim,"wq")==0)     //Prueba de usar comando
+    if(strcmp(vim,"wq")==0)
     {
-        printf("Digite el nombre donde se guardar%c el archivo de texto: ",160);
+        printf("Digite el nombre donde se guardar%c el archivo de texto, poner '.txt' al final: ",160);
         gets(guardar_texto);
-        guardar_nuevo=fopen(guardar_texto,"rt");
+        guardar_nuevo=fopen(guardar_texto,"rt");/*Se crea el archivo con el nombre digitado por el usuario*/
 
         printf("\nEl archivo no existia, por tanto se ha creado!\n");
         guardar_nuevo=fopen(guardar_texto,"r");
@@ -409,7 +418,7 @@ int vim (char *texto)
         if(!(guardar_nuevo==NULL))
         {
             fclose(guardar_nuevo);
-            guardar_nuevo=fopen(guardar_texto,"w+t");
+            guardar_nuevo=fopen(guardar_texto,"w+t"); /*Aqui se vuelve abrir en modo escritura para guardarel texto digitado anteriormente*/
             fputs(texto,guardar_nuevo);
             printf("Texto guardado con exito!\n");
             fclose(guardar_nuevo);
@@ -469,7 +478,7 @@ int vim (char *texto)
     else if(strcmp(vim,"a")==0)
     {
         char lectura;
-        printf("\nDigite el nombre del archivo: ");
+        printf("\nDigite el nombre del archivo, poner '.txt' al final: ");
         gets(guardar_texto);
         guardar_nuevo=fopen(guardar_texto,"r");
 

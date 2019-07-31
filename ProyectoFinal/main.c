@@ -3,6 +3,18 @@ int main()
 {
     char *texto;
 
+    printf("\t\t\t\t COMANDOS\n\n");
+    printf("\t\t '>'->entrar al modo comando\n");
+    printf("\t\t %%s->reemplazar letra o palabra\n");
+    printf("\t\t a->insertar texto en un archivo ya creado\n");
+    printf("\t\t i->insertar texto\n");
+    printf("\t\t d->borrar todas las lineas debajo de la digitada\n");
+    printf("\t\t dd->borrar una linea dicha por el usuario\n");
+    printf("\t\t x->borra un caracter o una palabra dicha por el usuario\n");
+    printf("\t\t q!->sale del modo comando\n\n\n");
+
+
+
     printf("Digite texto: \n");
 
     texto=leer();
