@@ -205,7 +205,7 @@ void aba(char *texto)
 void sangria(char *texto)
 {
     int cont=0;
-    char aux[1000], tab[1000]= {'\t'};
+    char aux[2], tab[1000]= {'\t'};
 
     strcpy(aux,tab);
 
@@ -245,7 +245,7 @@ int contador_palabras(char *texto)
         {
             cont++;
         }
-        if(texto[i]=='\n' && (texto[i+1]!='\n' && texto[i+1]!=' ' && texto[i+1]!='\t'))
+        if(texto[i]=='\n' && (texto[i+2]!='\n' && texto[i+2]!=' ' && texto[i+2]!='\t'))
         {
             cont++;
         }
@@ -260,11 +260,11 @@ int contador_oraciones(char *texto)
     punto no haya otro punto. También cuenta como oracion luego de salto de línea*/
     for (int i=0; texto[i]!='\0'; i++)
     {
-        if(*(texto+i)=='.' && (*(texto+(i+1))!='.' && *(texto+(i+1))!='\n') && texto[i+1]!='\t')
+        if(texto[i]=='.' && texto[i+1]==' ')
         {
             cont++;
         }
-        if(texto[i]=='\n' && (texto[i+1]!='\n' && texto[i+1]!='\t'))
+        if(texto[i]=='\n' && texto[i+2]!='\n')
         {
             cont++;
         }
@@ -279,7 +279,7 @@ int contador_parrafos(char *texto)
      salto de línea no haya otro*/
     for (int i=0; texto[i]!='\0'; i++)
     {
-        if(texto[i]=='\n' && (texto[i+1]!='\n' && texto[i+1]!='\t'))
+        if(texto[i]=='\n' && texto[i+2]!='\n')
         {
             cont++;
         }

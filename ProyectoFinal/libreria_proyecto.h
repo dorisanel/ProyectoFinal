@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <windows.h>
 #define LETRA 62 // asigno el simbolo > para poder digirar comando
 char *leer();
 void corregir_espacios(char*);

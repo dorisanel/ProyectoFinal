@@ -47,15 +47,15 @@
 
 1560202283 c:\users\aneli\onedrive\desktop\algprogm-lab\tarea1-11\funcion.h
 
-1564534737 source:c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.c
+1564572309 source:c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.c
 	"libreria_proyecto.h"
 
-1564517487 c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.h
+1564539594 c:\users\aneli\onedrive\desktop\proyectofinal\libreria_proyecto.h
 	<string.h>
 	<stdlib.h>
 	<stdio.h>
 
-1564535277 source:c:\users\aneli\onedrive\desktop\proyectofinal\minunit_proyecto_final\main.c
+1564572806 source:c:\users\aneli\onedrive\desktop\proyectofinal\minunit_proyecto_final\main.c
 	"minunit.h"
 	"../libreria_proyecto.h"
 

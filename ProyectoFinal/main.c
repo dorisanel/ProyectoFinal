@@ -1,6 +1,7 @@
 #include "libreria_proyecto.h"
 int main()
 {
+    system("color b0");
     char *texto;
 
     printf("\t\t\t\t COMANDOS\n\n");
